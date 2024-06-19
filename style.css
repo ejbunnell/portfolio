@@ -1,0 +1,36 @@
+body {
+    background-color: #3C3744;
+    color: #FBFFF1;
+    display: flex;
+    height: 500vh;
+}
+
+#navbar {
+    width: 70px;
+    height: 60vh;
+    text-align: center;
+    position: fixed;
+    transform: translateY(2vh);
+    border-radius: 25px;
+}
+
+#menu-icon {
+    margin-bottom: 12vh;
+    width: 50px;
+    padding-top: 50%;
+}
+
+#menu-icons {
+    display: none;
+}
+
+#menu-icons img {
+    width: 40px;
+    margin-top: 1vh;
+    margin-left: 1%;
+}
+
+#info {
+    width: 100%;
+    text-align: center;
+}
