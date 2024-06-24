@@ -24,6 +24,16 @@
     display: none;
 }
 
+#menu-icons.show {
+    transition: 0.5s;
+    display: block !important;
+}
+
+#menu-icons.hide {
+    transition: 0.5s;
+    display: none !important;
+}
+
 #menu-icons img {
     width: 40px;
     margin-top: 1vh;
