@@ -16,9 +16,4 @@ $(function() {
             menuPos = 0;
         }
     });
-
-    // $("#profile").click(function() {
-    //     console.log($("h1").)
-    // })
-
 });
