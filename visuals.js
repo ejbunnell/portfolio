@@ -1,4 +1,4 @@
-import * as THREE from "three";
+import * as THREE from "node_modules/three";
 
 const width = window.innerWidth * 0.8;
 const height = 400;
