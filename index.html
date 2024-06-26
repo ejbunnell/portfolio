@@ -11,6 +11,7 @@
 </head>
 <body>
     <script type="module" src="visuals.js"></script>
+
     <div id="navbar">
         <img id="menu-icon" src="images/menuLight.png">
         <div id="menu-icons">
@@ -19,11 +20,13 @@
             <img id="contact" src="images/contact.png">
         </div>
     </div>
-
-    <div id="info">
-        <div id="profile">
-            <h1>About Me</h1>
-            <p>Some text will go here eventually</p>
+    <div id="main-content">
+        <canvas data-engine="three.js r165" id="dolly-camera"></canvas>
+        <div id="info">
+            <div id="profile">
+                <h1>About Me</h1>
+                <p>Some text will go here eventually</p>
+            </div>
         </div>
     </div>
 </body>

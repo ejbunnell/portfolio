@@ -13,6 +13,10 @@ body {
     border-radius: 25px;
 }
 
+#main-content {
+    margin: auto;
+}
+
 #menu-icon {
     margin-bottom: 12vh;
     width: 50px;
