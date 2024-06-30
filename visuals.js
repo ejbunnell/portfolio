@@ -1,4 +1,5 @@
 import * as three from "three";
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
 const width = window.innerWidth * 0.8;
 const height = 400;
@@ -13,12 +14,39 @@ let canvas = document.getElementById("dolly-camera");
 const renderer = new three.WebGLRenderer({canvas: canvas, antialias: true});
 renderer.setSize( width, height );
 
-const geometry = new three.BoxGeometry( 100, 0.1, 500 );
-const material = new three.MeshBasicMaterial( { color: 0x000000 } );
+const geometry = new three.BoxGeometry( 500, 0.1, 125 );
+const textureCube = new three.TextureLoader().load("images/textures/grass.jpg");
+textureCube.wrapS = three.RepeatWrapping;
+textureCube.wrapT = three.RepeatWrapping;
+textureCube.repeat.set( 50, 10 );
+
+const material = new three.MeshBasicMaterial( { color: 0x888888, map: textureCube } );
 const floor = new three.Mesh( geometry, material );
 floor.position.y = -5;
 floor.position.z = -40;
 scene.add( floor );
+
+
+const loader = new GLTFLoader();
+const offset = {x: 13.75, z: 18.5};
+
+const numTrees = 65;
+console.log(camera.position.x);
+for (let i = 0; i < numTrees; i++) {
+    loader.load( 'models/realistic_tree.glb', function ( tree ) {
+        tree.scene.position.y = -5;
+        tree.scene.position.x = (i % 2 === 0 ? 15 + (Math.random() * 3) : -15 - (Math.random() * 3)) + offset.x;
+        tree.scene.position.z = -i * 1.5 + offset.z - 8;
+        scene.add(tree.scene);
+    }, undefined, function ( error ) {
+        console.error( error );
+    } );
+}
+
+
+
+const light = new three.AmbientLight( 0xFFFFFF, 5 ); // soft white light
+scene.add( light );
 
 const numImages = 10;
 
