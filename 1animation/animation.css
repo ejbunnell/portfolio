@@ -1,0 +1,12 @@
+body {
+    background-color: #3C3744;
+    color: #FBFFF1;
+    display: flex;
+    justify-content: center;
+    top: 50%;
+    transform: translateY(10%);
+}
+
+#dolly-camera {
+    border-radius: 25px;
+}
