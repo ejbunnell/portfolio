@@ -1,0 +1,40 @@
+body {
+    text-align: center;
+}
+
+#projects {
+    margin-top: 8%;
+}
+
+.projects {
+    padding-bottom: 12%;
+    display: block;
+    color: #F6EEFB;
+}
+
+.projects img {
+    width: 30%;
+}
+
+.projects .project-info {
+    width: 50%;
+}
+
+.projects.left .project-info {
+    margin-left: 10%;
+}
+
+.projects.left img {
+    float: right;
+    margin-right: 10%;
+}
+
+.projects.right .project-info {
+    float: right;
+    margin-right: 10%;
+}
+
+.projects.right img {
+    float: left;
+    margin-left: 10%;
+}

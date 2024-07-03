@@ -1,0 +1,13 @@
+body {
+    text-align: center;
+}
+
+#headshot {
+    width: 25%;
+    border-radius: 25%;
+}
+
+#main-content {
+    width: 70%;
+    color: #CFB3CD;
+}

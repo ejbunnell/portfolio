@@ -1,8 +1,8 @@
 import * as three from "three";
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
-const width = window.innerWidth * 0.975;
-const height = window.innerHeight * 0.8;
+let width = window.innerWidth * 0.975;
+let height = window.innerHeight * 0.8;
 
 const scene = new three.Scene();
 scene.background = new three.Color(0x3C3744);
@@ -32,10 +32,13 @@ for (let i = 0; i < 2; i++) {
     scene.add(rail);
 }
 
+let doneLoading = false;
+
 const loader = new GLTFLoader();
 const offset = { x: 13.75, z: 18.5 };
 
 const numTrees = 65;
+let moveCartInterval;
 console.log(camera.position.x);
 for (let i = 0; i < numTrees; i++) {
     loader.load('../models/realistic_tree.glb', function (tree) {
@@ -43,8 +46,13 @@ for (let i = 0; i < numTrees; i++) {
         tree.scene.position.x = (i % 2 === 0 ? 15 + (Math.random() * 3) : -15 - (Math.random() * 3)) + offset.x;
         tree.scene.position.z = -i * 1.5 + offset.z - 8;
         scene.add(tree.scene);
+        if (i + 1 === numTrees) {
+            doneLoading = true;
+            moveCartInterval = setInterval(moveCart, 30);
+        }
     }, undefined, function (error) {
         console.error(error);
+        $("#error").show();
     });
 }
 
@@ -76,8 +84,11 @@ cart.position.z = -2.5;
 scene.add(cart);
 
 function animate() {
-    moveClosestPhoto();
-    renderer.render(scene, camera);
+    if (doneLoading) {
+        $("#optimise").hide();
+        moveClosestPhoto();
+        renderer.render(scene, camera);
+    }
 }
 
 function moveClosestPhoto() {
@@ -128,7 +139,7 @@ renderer.setAnimationLoop(animate);
 let lastOppAdd = false;
 function cameraShake() {
     if (Math.abs(camera.rotation.z) > 0.1) camera.rotation.z /= 3;
-    let shake = Math.random() * 0.075;
+    let shake = Math.random() * 0.03;
     if (lastOppAdd) {
         shake *= - 1;
         lastOppAdd = false;
@@ -139,37 +150,91 @@ function cameraShake() {
     camera.rotation.z += shake;
 }
 
-$(document).on("keydown", function (event) {
-    if (event.key === "ArrowUp") {
+let stage = 0;
+function moveCart() {
+    if (stage === 0) {
         camera.position.z -= 0.25;
         cart.position.z -= 0.25;
-        if (camera.position.z % 0.5 === 0)
+        if (camera.position.z % 0.5 === 0) {
             cameraShake();
+        }
+        if (camera.position.z <= -102) stage = 1;
     }
-    else if (event.key === "ArrowDown") {
-        camera.position.z += 0.25;
-        cart.position.z += 0.25;
-    }
-    else if (event.key === "ArrowLeft") {
-        camera.position.x -= 1;
-        cart.position.x -= 1;
-    }
-    else if (event.key === "ArrowRight") {
-        camera.position.x += 1;
-        cart.position.x += 1;
-    }
-    else if (event.key === "8") {
-        camera.position.y += 1;
-        cart.position.y += 1;
-    }
-    else if (event.key === "2") {
-        camera.position.y -= 1;
-        cart.position.y -= 1;
-    }
-    else if (event.key === "7") {
-        camera.rotation.x += .1;
-    }
-    else if (event.key === "1") {
+    else if (stage === 1) {
         camera.rotation.x -= .1;
+        cart.rotation.x -= .1;
+        camera.rotation.z = 0;
+        cart.position.z += Math.PI / 12;
+
+        camera.position.z -= 0.25;
+        cart.position.z -= 0.25;
+        camera.position.y -= 0.25;
+        cart.position.y -= 0.25;
+        if (camera.rotation.x <= -Math.PI / 2) stage = 2;
     }
-})
+    else if (stage === 2) {
+        camera.position.y -= 0.25;
+        cart.position.y -= 0.25;
+        if (camera.position.y % 0.5 === 0) {
+            splatName((camera.position.y + 4.5) * -2)
+        }
+        if (camera.position.y < name.length / -2 - 4) stage = 3;
+    }
+    else if (stage === 3) {
+        setTimeout(() => {window.location.href = "../2home/home.html"}, 500);
+    }
+}
+
+
+let name = "Elliott Bunnell".split("");
+let spacing = 90 / name.length;
+let positions = [];
+for (let i = 1; i <= name.length; i++) {
+    positions.push({x: spacing * i, y: Math.random() * 10 - 5, rot: Math.random() * 45 - 22.5})
+}
+
+function splatName(index) {
+    $("body").append(`<p class="splat" style="left: ${positions[index].x}%; top: ${positions[index].y}%; transform: rotateZ(${positions[index].rot}deg)">${name[index]}</p>`);
+}
+
+$(window).on("resize", function() {
+    width = window.innerWidth * 0.975;
+    height = window.innerHeight * 0.8;
+    camera.aspect = width / height;
+    renderer.setSize(width, height);
+});
+
+// $(document).on("keydown", function (event) {
+//     if (event.key === "ArrowUp") {
+//         camera.position.z -= 0.25;
+//         cart.position.z -= 0.25;
+//         if (camera.position.z % 0.5 === 0)
+//             cameraShake();
+//     }
+//     else if (event.key === "ArrowDown") {
+//         camera.position.z += 0.25;
+//         cart.position.z += 0.25;
+//     }
+//     else if (event.key === "ArrowLeft") {
+//         camera.position.x -= 1;
+//         cart.position.x -= 1;
+//     }
+//     else if (event.key === "ArrowRight") {
+//         camera.position.x += 1;
+//         cart.position.x += 1;
+//     }
+//     else if (event.key === "8") {
+//         camera.position.y += 1;
+//         cart.position.y += 1;
+//     }
+//     else if (event.key === "2") {
+//         camera.position.y -= 1;
+//         cart.position.y -= 1;
+//     }
+//     else if (event.key === "7") {
+//         camera.rotation.x += .1;
+//     }
+//     else if (event.key === "1") {
+//         camera.rotation.x -= .1;
+//     }
+// })
