@@ -2,6 +2,7 @@ body {
     background-color: #3C3744;
     color: #FBFFF1;
     display: block;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 #main-content {
@@ -12,7 +13,7 @@ body {
     width: 70px;
     height: 60vh;
     text-align: center;
-    position: absolute;
+    position: fixed;
     transform: translateY(-10vh);
     border-radius: 25px;
     user-select: none;
@@ -29,7 +30,7 @@ body {
 }
 
 #menu-icon {
-    margin-bottom: 8vh;
+    margin-bottom: 6vh;
     width: 50px;
     padding-top: 30%;
 }
@@ -47,9 +48,14 @@ body {
     opacity: 1;
 }
 
-
 #menu-icons img:active {
     border: #FBFFF1 solid 1px;
+}
+
+#menu-icons p {
+    margin-top: 6vh;
+    font-size: 0.85em;
+    color: #B4C5E4;
 }
 
 .title {

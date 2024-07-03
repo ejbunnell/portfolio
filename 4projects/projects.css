@@ -12,8 +12,13 @@ body {
     color: #F6EEFB;
 }
 
+.projects.right {
+    padding-bottom: 25%;
+}
+
 .projects img {
     width: 30%;
+    border-radius: 15px;
 }
 
 .projects .project-info {
@@ -24,6 +29,10 @@ body {
     margin-left: 10%;
 }
 
+.projects.left .project-info p {
+    margin-right: 10%;
+}
+
 .projects.left img {
     float: right;
     margin-right: 10%;
@@ -32,6 +41,10 @@ body {
 .projects.right .project-info {
     float: right;
     margin-right: 10%;
+}
+
+.projects.right .project-info p {
+    margin-left: 10%;
 }
 
 .projects.right img {

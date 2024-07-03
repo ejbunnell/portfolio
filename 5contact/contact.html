@@ -6,6 +6,7 @@
     <title>Home</title>
     <link rel="stylesheet" href="contact.css">
     <link rel="stylesheet" href="../main.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script src="../jquery-3.7.1.min.js"></script>
     
     <script defer src="contact.js"></script>
@@ -21,19 +22,21 @@
             <img id="projects" title="Projects" src="../images/projects.png">
             <img id="contact" title="Contact" src="../images/contact.png">
             <img id="sources" title="Sources" src="../images/sources.png">
+            <p id="copyright">Elliott Bunnell © 2024</p>
         </div>
     </div>
     <div id="main-content">
         <div id="socials">
-            <img id="instagram" src="../images/instagram.png" alt="Link to my Instagram">
-            <img id="github" src="..." alt="Link to my GitHub">
-            <img id="linkedin" src="..." alt="Link to my LinkedIN">
+            <a href="https://www.instagram.com/elliottbunnell/"><img id="instagram" src="../images/instagram.png" alt="Link to my Instagram" title="Instagram"></a>
+            <a href="https://github.com/ejbunnell"><img id="github" src="../images/github.png" alt="Link to my GitHub" title="Github"></a>
+            <a href="www.linkedin.com/in/elliottbunnell"><img id="linkedin" src="../images/linkedin.png" alt="Link to my LinkedIn" title="LinkedIn"></a>
         </div>
-        <div id="contact-form">
-            <input id="name" type="text" placeholder="Name">
-            <input id="email" type="email" placeholder="Email">
-            <textarea id="message" rows="30" cols="50" placeholder="Message"></textarea>
-        </div> 
+        <form id="contact-form">
+            <input id="name" name="user_name" type="text" placeholder="Name">
+            <input id="email" name="user_email" type="email" placeholder="Email">
+            <textarea id="message" name="message" rows="30" cols="50" placeholder="Message"></textarea>
+            <input type="submit" id="submit" value="Submit!">
+        </form> 
     </div>
 </body>
 </html>

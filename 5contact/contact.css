@@ -2,6 +2,14 @@ body {
     text-align: center;
 }
 
+#socials {
+    margin-top: 5%;
+}
+
+#socials a {
+    padding: 2%;
+}
+
 #contact-form {
     padding: 5%;
     display: grid;
@@ -16,10 +24,25 @@ input, textarea {
     color: #DFC2F2;
     border: #FBFFF1 solid 2px;
     border-radius: 25px;
-    width: 17vw;
+    width: 40vw;
     height: 5vh;
     text-align: center;
     font-size: 1em;
+}
+
+#submit {
+    width: 20vw;
+}
+
+#submit:hover {
+    background-color: #102d57;
+    transition: 1s ease;
+}
+
+#submit:active {
+    background-color: #0e2649;
+    border-color: #DFC2F2;
+    transition: 0.1s ease;
 }
 
 input::placeholder, textarea::placeholder {
@@ -34,7 +57,7 @@ input:-webkit-autofill {
 
 #message {
     resize: none;
-    padding: 1%;
+    padding: 1.5%;
     height: 17vh;
     text-align: left;
 }
