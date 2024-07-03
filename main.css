@@ -1,0 +1,57 @@
+body {
+    background-color: #3C3744;
+    color: #FBFFF1;
+    display: block;
+}
+
+#main-content {
+    margin: auto;
+}
+
+#navbar {
+    width: 70px;
+    height: 60vh;
+    text-align: center;
+    position: absolute;
+    transform: translateY(-10vh);
+    border-radius: 25px;
+    user-select: none;
+}
+
+#navbar.show {
+    background-color: #28242d;
+    transition: 1s ease;
+}
+
+#navbar.hide {
+    background-color: #3C3744;
+    transition: 1s ease;
+}
+
+#menu-icon {
+    margin-bottom: 8vh;
+    width: 50px;
+    padding-top: 30%;
+}
+
+#menu-icons img {
+    width: 40px;
+    padding: 2px;
+    margin-top: 1vh;
+    margin-left: 1%;
+    opacity: 0.85;
+    transition: 0.1s ease;
+}
+
+#menu-icons img:hover {
+    opacity: 1;
+}
+
+
+#menu-icons img:active {
+    border: #FBFFF1 solid 1px;
+}
+
+.title {
+    font-size: 3em;
+}

@@ -1,12 +1,37 @@
 body {
     background-color: #3C3744;
     color: #FBFFF1;
-    display: flex;
-    justify-content: center;
+    display: block;
+    text-align: center;
     top: 50%;
     transform: translateY(10%);
 }
 
 #dolly-camera {
     border-radius: 25px;
+}
+
+.splat {
+    font-size: 5em;
+    font-family: fantasy;
+    color: #A9C6EF;
+    position: fixed;
+    z-index: 5;
+}
+
+#info-container {
+    display: block;
+}
+
+.info {
+    position: relative;
+}
+
+#optimise {
+    color: limegreen;
+}
+
+#error {
+    color: red;
+    display: none;
 }

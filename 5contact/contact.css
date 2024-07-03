@@ -1,0 +1,40 @@
+body {
+    text-align: center;
+}
+
+#contact-form {
+    padding: 5%;
+    display: grid;
+    columns: 1;
+    row-gap: 15%;
+}
+
+input, textarea {
+    font-family: 'Courier New', Courier, monospace;
+    margin: auto;
+    background-color: #133667;
+    color: #DFC2F2;
+    border: #FBFFF1 solid 2px;
+    border-radius: 25px;
+    width: 17vw;
+    height: 5vh;
+    text-align: center;
+    font-size: 1em;
+}
+
+input::placeholder, textarea::placeholder {
+    font-family: 'Courier New', Courier, monospace;
+    color: #DFC2F2;
+    opacity: 0.9;
+}
+
+input:-webkit-autofill { 
+    transition: 1s 5000s; 
+}
+
+#message {
+    resize: none;
+    padding: 1%;
+    height: 17vh;
+    text-align: left;
+}
